@@ -23,7 +23,6 @@ class Vigenre(CipherInterface):
 		# repeat the key enough to cover the plaintext
 		length = math.ceil(len(plaintext) / len(self.key))
 		keytext = self.key * length
-		print(keytext)
 
 		for p,k in zip(plaintext, keytext):
 			ciphertext += self.table_lookup(p, k)
@@ -38,7 +37,6 @@ class Vigenre(CipherInterface):
 		# repeat the key enough to cover the plaintext
 		length = math.ceil(len(ciphertext) / len(self.key))
 		keytext = self.key * length
-		print(keytext)
 
 		for p,k in zip(ciphertext, keytext):
 			plaintext += self.table_lookup(p, k, reverse=True)
