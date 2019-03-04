@@ -28,7 +28,7 @@ parser.add_argument("cipher", help="""Name of the cipher to use
 PLF - Playfair
 RTS - Row Transposition
 RFC - Railfence
-VIG - Vigenère
+VIG - Vigenere
 CES - Caesar
 MAC - Monoalphabetic""")
 
