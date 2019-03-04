@@ -16,7 +16,8 @@ class Vigenre(CipherInterface):
 
 
 	def encrypt(self, plaintext):
-		plaintext = plaintext.upper()
+		plaintext = plaintext.upper().replace(' ', '')
+		self.key.replace(' ', '')
 
 		ciphertext = ""
 
@@ -30,7 +31,8 @@ class Vigenre(CipherInterface):
 		return ciphertext
 
 	def decrypt(self, ciphertext):
-		ciphertext = ciphertext.upper()
+		ciphertext = ciphertext.upper().replace(' ', '')
+		self.key.replace(' ', '')
 
 		plaintext = ""
 
