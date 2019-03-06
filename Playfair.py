@@ -168,9 +168,6 @@ class Playfair(CipherInterface):
 		# build matrix
 		matrix = self.buildMatrix()
 
-		#make the plaintext lowercase
-		plaintext = plaintext.lower()
-
 		#create blocks from the plaintext
 		plaintext_blocks = self.createBlocks(plaintext)
 
