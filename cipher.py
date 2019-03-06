@@ -64,15 +64,26 @@ elif(arguments.cipher == "CES"):
 elif(arguments.cipher == "MAC"):
 	cipher = Monoalphabetic()
 
-# set cipher key
-cipher.setKey(arguments.key)
+# Normalize and set the cipher key
+normalizedKey = ""
+for char in arguments.key.lower():
+	if 96 < ord(char) < 123:
+		normalizedKey += char
+cipher.setKey(normalizedKey)
 
 # set up input and output files
 inputFile = open(arguments.input, "r")
 outputFile = open(arguments.output, "w")
 
+# Normalize the input file by stripping all non-lowercase ascii
+rawInput = inputFile.read().lower()
+normalizedInput = ""
+for char in rawInput:
+	if 96 < ord(char) < 123:
+		normalizedInput += char
+
 # Perform the encryption/decryption
 if(arguments.mode == "ENC"):
-	outputFile.write(cipher.encrypt(inputFile.read()))
+	outputFile.write(cipher.encrypt(normalizedInput))
 else:
-	outputFile.write(cipher.decrypt(inputFile.read()))
+	outputFile.write(cipher.decrypt(normalizedInput))
