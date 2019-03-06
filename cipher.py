@@ -73,6 +73,6 @@ outputFile = open(arguments.output, "w")
 
 # Perform the encryption/decryption
 if(arguments.mode == "ENC"):
-	outputFile.write(cipher.encrypt(inputFile.read()))
+	outputFile.write(cipher.encrypt(cipher.remove_space(inputFile.read())))
 else:
-	outputFile.write(cipher.decrypt(inputFile.read()))
+	outputFile.write(cipher.decrypt(cipher.remove_space(inputFile.read())))
