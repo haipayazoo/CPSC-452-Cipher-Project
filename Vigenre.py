@@ -4,19 +4,18 @@ import math
 class Vigenre(CipherInterface):
 
 	def table_lookup(self, plain, key, reverse=False):
-		pindex = ord(plain) - 65
-		kindex = ord(key) - 65
+		pindex = ord(plain) - 97
+		kindex = ord(key) - 97
 
 		if not reverse:
 			offset = (pindex + kindex) % 26
 		else:
 			offset = (pindex - kindex) % 26
 
-		return chr(offset + 65)
+		return chr(offset + 97)
 
 
 	def encrypt(self, plaintext):
-		plaintext = plaintext.upper().replace(' ', '')
 		self.key.replace(' ', '')
 
 		ciphertext = ""
@@ -31,7 +30,6 @@ class Vigenre(CipherInterface):
 		return ciphertext
 
 	def decrypt(self, ciphertext):
-		ciphertext = ciphertext.upper().replace(' ', '')
 		self.key.replace(' ', '')
 
 		plaintext = ""
