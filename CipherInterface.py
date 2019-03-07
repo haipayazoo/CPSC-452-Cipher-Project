@@ -11,9 +11,3 @@ class CipherInterface:
 
 	def decrypt(self, ciphertext):
 		print("decrypt!")
-
-	def remove_space(self, plaintext):
-		plaintext = plaintext.replace('\n', "")
-		plaintext = plaintext.replace('\t', "")
-		plaintext = plaintext.replace(" ", "")
-		return plaintext;

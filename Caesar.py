@@ -8,9 +8,6 @@ class Caesar(CipherInterface):
 		#init cipher text
 		ciphertext = ""
 
-		#make the plaintext lowercase
-		plaintext = plaintext.lower()
-
 		#iterate through all characters in the plaintext
 		for c in plaintext:
 			#if the character is a letter then cipher it
