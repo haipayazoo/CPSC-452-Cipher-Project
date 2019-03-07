@@ -65,13 +65,17 @@ elif(arguments.cipher == "MAC"):
 	cipher = Monoalphabetic()
 
 # Normalize and set the cipher key
-if arguments.cipher not in ["RFC", "CES", "RTS"]:
+if arguments.cipher in ["VIG", "PLF"]:
 	normalizedKey = ""
-	for char in arguments.key.lower():
+	for char in str(arguments.key).lower():
 		if 96 < ord(char) < 123:
 			normalizedKey += char
-else:
+	assert len(normalizedKey) > 0, "Zero length input key"
+elif arguments.cipher in ["RFC", "CES"]:
 	normalizedKey = int(arguments.key)
+else:
+	normalizedKey = str(arguments.key)
+	assert normalizedKey, "Invalid key"
 
 cipher.setKey(normalizedKey)
 
