@@ -26,10 +26,30 @@ class RowTransposition(CipherInterface):
         return cyphertext
 
     def decrypt(self, ciphertext):
-        return "Decrypted text!"
+        key = self.key
+        padd=['x','y','z','a','b','c','d']
+        lenk=len(key)
+       
+        plaintext=''
+        rows=len(ciphertext)/lenk
+        current=0
+        
+        while current < rows:
+            x=1
+            while x< lenk+1:
+                index=int((rows*(key.index(str(x))))+current)
+                plaintext=plaintext+ciphertext[index]
+                x=x+1
+            current=current+1
+            x=-1
+            while plaintext[-1:] in padd:
+                plaintext=plaintext[:-1]
+        return plaintext
 
 
 #test code
-#x=RowTransposition()
-#x.setKey('3421567')
-#print(x.encrypt('transpositionciphers'))
+# x=RowTransposition()
+# x.setKey('3421567')
+# encrypted=x.encrypt('transpositionciphers')
+# print(encrypted)
+# print(x.decrypt(encrypted))
