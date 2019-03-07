@@ -1,4 +1,13 @@
 # CPSC-452-Cipher-Project
+The program reads in a input file, encrypt/decrypt the file contents using the specified key and cipher,
+and write the encrypted/decrypted contents to the specified file. <br>
+
+Types of ciphers used: <br>
+* Playfair
+* Row Transiposition
+* Rail Fence
+* Vigenre
+* Caesar
 
 ## Group Members
 - Coleman Nugent <colemannugent@csu.fullerton.edu>
