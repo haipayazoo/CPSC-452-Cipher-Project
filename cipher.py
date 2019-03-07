@@ -65,10 +65,14 @@ elif(arguments.cipher == "MAC"):
 	cipher = Monoalphabetic()
 
 # Normalize and set the cipher key
-normalizedKey = ""
-for char in arguments.key.lower():
-	if 96 < ord(char) < 123:
-		normalizedKey += char
+if arguments.cipher not in ["RFC", "CES", "RTS"]:
+	normalizedKey = ""
+	for char in arguments.key.lower():
+		if 96 < ord(char) < 123:
+			normalizedKey += char
+else:
+	normalizedKey = int(arguments.key)
+
 cipher.setKey(normalizedKey)
 
 # set up input and output files
