@@ -31,25 +31,40 @@ class RowTransposition(CipherInterface):
         return cyphertext
 
     def decrypt(self, ciphertext):
-        key = self.key
-        padd = ['x','y','z','a','b','c','d']
-        key_length = len(key)
+        #initialize variables
+        plaintext = ""
 
-        plaintext = ''
-        rows = len(ciphertext)/key_length
-        index = 0
+        len_key = len(self.key)
+        len_ct = len(ciphertext)
 
-        while index < rows:
-            x = 1
+        #calculate number of rows
+        num_rows = int(len_ct / len_key)
 
-            while x < key_length + 1:
-                index = int((rows * (key.index(str(x)))) + index)
-                plaintext = plaintext + ciphertext[index]
-                x += 1
+        #create an array of rows
+        rows = []
 
-            index += 1
-            x -= 1
-            while plaintext[-1:] in padd:
-                plaintext = plaintext[:-1]
+        #initialize rows to empty strings
+        for x in range(0, num_rows):
+            rows.append("")
 
+        #copy the ciphertext into the rows by using the key to select what to concat first
+        #for each number in the key, copy the corresponding column into the rows
+        for column in range(1, len_key + 1):
+            # get the index of the key at the column value
+            # EX: key = 3421567 for column 1 will return 3 and then column 2 will return 2
+            index = self.key.index(str(column))
+
+            #find the point in the ciphertext where the column should start
+            col_start = index * num_rows
+
+            # for each row append the corresponding ciphertext characters offset at the index
+            for row in range(0, num_rows):
+                # concat onto the row the ciphertext at where the column should start plus the row offset
+                rows[row] = rows[row] + ciphertext[col_start + row]
+
+        #concat each row onto the plaintext
+        for row in range(0, num_rows):
+            plaintext = plaintext + rows[row]
+
+        #return the plaintext
         return plaintext
