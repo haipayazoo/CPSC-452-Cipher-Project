@@ -8,6 +8,7 @@ Types of ciphers used: <br>
 * Rail Fence
 * Vigenre
 * Caesar
+* Hill
 
 ## Group Members
 - Coleman Nugent <colemannugent@csu.fullerton.edu>
@@ -20,3 +21,9 @@ Types of ciphers used: <br>
 
 ## Usage
 Run `./cipher.py --help` for the full usage.
+
+## Extra Credit
+We implemented the Hill Cipher for the extra credit.
+
+## Additional Notes
+As stated in the usage, run ./cipher.py --help for the proper format on how to run it, though the format of running the program with the proper cipher is in the same format presented in the instructions.
