@@ -66,5 +66,9 @@ class RowTransposition(CipherInterface):
         for row in range(0, num_rows):
             plaintext = plaintext + rows[row]
 
+        # remove padding
+        while plaintext[-1] == "x":
+            plaintext = plaintext[:-1]
+
         #return the plaintext
         return plaintext
