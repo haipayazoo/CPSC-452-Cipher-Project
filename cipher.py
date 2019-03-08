@@ -94,4 +94,4 @@ for char in rawInput:
 if(arguments.mode == "ENC"):
 	outputFile.write(cipher.encrypt(normalizedInput))
 else:
-	outputFile.write(cipher.decrypt(normalizedInput))
+	outputFile.write(cipher.decrypt(normalizedInput) + '\n')
