@@ -15,7 +15,7 @@ class RowTransposition(CipherInterface):
             plaintext = plaintext + padd[x]
             x = (x + 1) % len(padd)
 
-        current = 0
+        index = 0
         matrix = [['' for j in range(cols)]for i in range(rows)]
         plainindex = 0
 
@@ -37,17 +37,17 @@ class RowTransposition(CipherInterface):
 
         plaintext = ''
         rows = len(ciphertext)/key_length
-        current = 0
+        index = 0
 
-        while current < rows:
+        while index < rows:
             x = 1
 
             while x < key_length + 1:
-                index = int((rows * (key.index(str(x)))) + current)
+                index = int((rows * (key.index(str(x)))) + index)
                 plaintext = plaintext + ciphertext[index]
                 x += 1
 
-            current += 1
+            index += 1
             x -= 1
             while plaintext[-1:] in padd:
                 plaintext = plaintext[:-1]
