@@ -37,22 +37,31 @@ class Railfence(CipherInterface):
 			columns = math.ceil(len(ciphertext) / int(self.key))
 			long_rows = len(ciphertext) % int(self.key)
 
-			for i in range(len(ciphertext)):
-				rail[row][col] = ciphertext[i]
+			if(long_rows > 0):
+				for i in range(len(ciphertext)):
+					rail[row][col] = ciphertext[i]
 
-				col += 1
+					col += 1
 
-				if(col == columns):
-					if(long_rows > 0):
-						col %= columns
-						long_rows -= 1
+					if(col == columns):
+						if(long_rows > 0):
+							col %= columns
+							long_rows -= 1
 
-				if(col == columns - 1):
-					if(long_rows <= 0):
-						col %= columns - 1
+					if(col == columns - 1):
+						if(long_rows <= 0):
+							col %= columns - 1
 
-				if(col == 0):
-					row += 1
+					if(col == 0):
+						row += 1
+			else:
+				for i in range(len(ciphertext)):
+					rail[row][col] = ciphertext[i]
+
+					col = (col + 1) % columns
+
+					if(col == 0):
+						row += 1
 
 			for i in range(columns):
 				for j in range(int(self.key)):
