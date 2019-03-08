@@ -29,8 +29,7 @@ parser.add_argument("cipher", help="""Name of the cipher to use. One of:
 	RTS - Row Transposition
 	RFC - Railfence
 	VIG - Vigenere
-	CES - Caesar
-	MAC - Monoalphabetic""")
+	CES - Caesar""")
 
 parser.add_argument("key", help="The key to use for encryption/decryption")
 parser.add_argument("mode", help="Run the cipher in ENC (encryption) or DEC (decryption) mode")
@@ -61,8 +60,6 @@ elif(arguments.cipher == "VIG"):
 	cipher = Vigenre()
 elif(arguments.cipher == "CES"):
 	cipher = Caesar()
-elif(arguments.cipher == "MAC"):
-	cipher = Monoalphabetic()
 
 # Normalize and set the cipher key
 if arguments.cipher in ["VIG", "PLF"]:
