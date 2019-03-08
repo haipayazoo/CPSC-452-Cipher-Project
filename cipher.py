@@ -10,6 +10,7 @@ from Railfence import *
 from Vigenre import *
 from Caesar import *
 from Hill import *
+from Enigma import *
 
 # PLF - playfair cipher
 # RTS - row transposition cipher
@@ -18,7 +19,7 @@ from Hill import *
 # CES - caesar cipher
 # MAC - monoalphabetic cipher
 
-valid_ciphers = ["PLF", "RTS", "RFC", "VIG", "CES", "HIL"]
+valid_ciphers = ["PLF", "RTS", "RFC", "VIG", "CES", "HIL", "EGM"]
 
 # Create our argument parser object
 parser = argparse.ArgumentParser(description='Encrypt and decrypt using six different ciphers.', formatter_class=argparse.RawTextHelpFormatter)
@@ -30,7 +31,8 @@ parser.add_argument("cipher", help="""Name of the cipher to use. One of:
 	RFC - Railfence
 	VIG - Vigenere
 	CES - Caesar
-	HIL - Hill""")
+	HIL - Hill
+	EGM - Enigma""")
 
 parser.add_argument("key", help="The key to use for encryption/decryption")
 parser.add_argument("mode", help="Run the cipher in ENC (encryption) or DEC (decryption) mode")
@@ -63,6 +65,8 @@ elif(arguments.cipher == "CES"):
 	cipher = Caesar()
 elif(arguments.cipher == "HIL"):
 	cipher = Hill()
+elif(arguments.cipher == "EGM"):
+	cipher = Enigma()
 
 # Normalize and set the cipher key
 if arguments.cipher in ["VIG", "PLF"]:
