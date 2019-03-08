@@ -9,7 +9,7 @@ class Playfair(CipherInterface):
 		CipherInterface.__init__(self)
 
 	# adds the key to the matrix and fills the rest with the alphabet
-	# WARNING: 
+	# WARNING:
 	def buildMatrix(self):
 		matrix =   [['', '', '', '', ''],
 					['', '', '', '', ''],
@@ -162,7 +162,7 @@ class Playfair(CipherInterface):
 				blocks.append(block)
 
 		return blocks
-				
+
 
 	def encrypt(self, plaintext):
 		# build matrix
@@ -197,8 +197,11 @@ class Playfair(CipherInterface):
 			plaintext_block = self.translateBlock(cipher_block, matrix, "DEC")
 
 			#append block to plaintext
-			plaintext = plaintext + plaintext_block[0]
-			plaintext = plaintext + plaintext_block[1]
+			if plaintext_block[1] == 'x':
+				plaintext = plaintext + plaintext_block[0]
+			else:
+				plaintext = plaintext + plaintext_block[0]
+				plaintext = plaintext + plaintext_block[1]
 
 		# remove the x that can be appended to the end of the plaintext
 		if plaintext[len(plaintext) - 1] == 'x':
