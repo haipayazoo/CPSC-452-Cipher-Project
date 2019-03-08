@@ -4,12 +4,12 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-CIPHERS=( PLF RTS RFC VIG CES )
-KEYS=( security 3421567 3 deceptive 5 )
+CIPHERS=( PLF RTS RFC VIG CES HIL )
+KEYS=( security 3421567 3 deceptive 5 gybnqkurp )
 
 echo "##### small.txt #####"
 FILE_IN=small.txt
-for c in {0..4}
+for c in {0..5}
 do
 	CIPHER=${CIPHERS[c]}
 	KEY=${KEYS[c]}
@@ -26,7 +26,7 @@ echo ""
 echo ""
 echo "##### big.txt #####"
 FILE_IN=big.txt
-for c in {0..4}
+for c in {0..5}
 do
 	CIPHER=${CIPHERS[c]}
 	KEY=${KEYS[c]}
