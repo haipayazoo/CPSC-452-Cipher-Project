@@ -6,7 +6,7 @@ class RowTransposition(CipherInterface):
     def encrypt(self, plaintext):
         cols = len(self.key)
         rows = math.ceil(len(plaintext)/cols)
-        padd = ['x','y','z','a','b','c','d']
+        padd = ['x']
         x = 0
         key = list(self.key)
         cyphertext = ''
