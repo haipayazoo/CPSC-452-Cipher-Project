@@ -5,7 +5,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 CIPHERS=( PLF RTS RFC VIG CES HIL EGM )
-KEYS=( security 3421567 3 deceptive 5 gybnqkurp dkvqfibjwpescxhtmyauolrgznuolqfdkvescxhzntmyaibjwprglrescxgzndkvqfimyauobjwpht )
+KEYS=( security 3421567 3 deceptive 5 gybnqkurp gzq )
 
 echo "##### small.txt #####"
 FILE_IN=small.txt

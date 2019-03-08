@@ -1,6 +1,16 @@
 from CipherInterface import *
 import math
 
+# The enigma cipher in this implementation takes in a key that is 26x3 characters lone
+# this is then translated into 26 character keys for each rotor
+# each rotor key should only contain 1 of each character in the alphabet
+
+# the rotor will translate a single character across its key
+
+# the enigma class will create 3 instances of the rotor and translate each
+# character of plaintext across each rotor in order to encrypt and backwards
+# to decrypt
+
 class Rotor(CipherInterface):
 
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -17,6 +27,10 @@ class Rotor(CipherInterface):
 		for i in range(0, 26):
 			self.array_in.append(i)
 			self.array_out.append(self.key.index(self.alphabet[i]))
+
+	# sets the position to the index of the char
+	def setPos(self, posChar):
+		self.position = self.alphabet.index(posChar)
 
 	# encrypts 1 character at a time
 	def encrypt(self, plaintext):
@@ -38,7 +52,7 @@ class Rotor(CipherInterface):
 	# decrypt 1 character at a time
 	def decrypt(self, ciphertext):
 		# set the location out side
-		loc_out = self.alphabet.index(ciphertext) - self.position#self.array_out[self.alphabet.index(ciphertext)] + self.position
+		loc_out = self.alphabet.index(ciphertext) - self.position
 		if loc_out > 25:
 			loc_out = loc_out - 26
 
@@ -73,15 +87,22 @@ class Enigma(CipherInterface):
 	rotors = []
 
 	def setKey(self, key):
-		self.key = "dkvqfibjwpescxhtmyauolrgznuolqfdkvescxhzntmyaibjwprglrescxgzndkvqfimyauobjwpht"
+		self.key = key
 
+		# create the list of rotors
 		self.rotors.append(Rotor())
 		self.rotors.append(Rotor())
 		self.rotors.append(Rotor())
 
-		self.rotors[0].setKey(self.key[:26])
-		self.rotors[1].setKey(self.key[26:52])
-		self.rotors[2].setKey(self.key[52:])
+		# static rotor keys
+		self.rotors[0].setKey("dkvqfibjwpescxhtmyauolrgzn")
+		self.rotors[1].setKey("uolqfdkvescxhzntmyaibjwprg")
+		self.rotors[2].setKey("lrescxgzndkvqfimyauobjwpht")
+
+		# set the starting position of the rotors to that of the key
+		self.rotors[0].setPos(self.key[:1])
+		self.rotors[1].setPos(self.key[1:2])
+		self.rotors[2].setPos(self.key[2:3])
 
 	# Encrpyts the plaintext using the Railfence cipher
 	def encrypt(self, plaintext):
