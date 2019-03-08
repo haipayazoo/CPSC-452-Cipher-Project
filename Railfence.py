@@ -4,11 +4,13 @@ from CipherInterface import *
 
 class Railfence(CipherInterface):
 
+	# Encrpyts the plaintext using the Railfence cipher
 	def encrypt(self, plaintext):
 		rail = [['\n' for j in range(len(plaintext))] for i in range(int(self.key))]
 		wrap = True
 		row, col = 0, 0
 
+		# Constructs the matrix from our plaintext
 		for i in range(len(plaintext)):
 			if(row == 0) or (row == int(self.key) - 1):
 				wrap = not wrap
@@ -22,6 +24,7 @@ class Railfence(CipherInterface):
 
 		result =[]
 
+		# Gets the results from our matrix
 		for i in range(int(self.key)):
 			for j in range(len(plaintext)):
 				if rail[i][j] != '\n':
@@ -29,6 +32,7 @@ class Railfence(CipherInterface):
 
 		return("" .join(result))
 
+	# Decrypts the ciphertext using the Railfence cipher
 	def decrypt(self, ciphertext):
 
 			rail = [['\n' for j in range(len(ciphertext))] for i in range(int(self.key))]
@@ -37,7 +41,10 @@ class Railfence(CipherInterface):
 			columns = math.ceil(len(ciphertext) / int(self.key))
 			long_rows = len(ciphertext) % int(self.key)
 
+			# Executes this if there are long rows in our matrix
 			if(long_rows > 0):
+
+				# Constructs the matrix
 				for i in range(len(ciphertext)):
 					rail[row][col] = ciphertext[i]
 
@@ -54,7 +61,10 @@ class Railfence(CipherInterface):
 
 					if(col == 0):
 						row += 1
+			# If there are no long rows in our matrix
 			else:
+
+				# Constructs the matrix
 				for i in range(len(ciphertext)):
 					rail[row][col] = ciphertext[i]
 
@@ -63,6 +73,7 @@ class Railfence(CipherInterface):
 					if(col == 0):
 						row += 1
 
+			# Gets the results from our constructed matrix
 			for i in range(columns):
 				for j in range(int(self.key)):
 					if rail[j][i] != '\n':
