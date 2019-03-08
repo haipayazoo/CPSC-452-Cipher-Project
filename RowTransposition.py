@@ -42,7 +42,7 @@ class RowTransposition(CipherInterface):
         while current < rows:
             x = 1
 
-            while x < key_length+1:
+            while x < key_length + 1:
                 index = int((rows * (key.index(str(x)))) + current)
                 plaintext = plaintext + ciphertext[index]
                 x += 1
