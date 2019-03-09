@@ -1,14 +1,15 @@
 # CPSC-452-Cipher-Project
 The program reads in a input file, encrypt/decrypt the file contents using the specified key and cipher,
-and write the encrypted/decrypted contents to the specified file. <br>
+and write the encrypted/decrypted contents to the specified file.
 
-Types of ciphers used: <br>
+Types of ciphers used:
 * Playfair
 * Row Transiposition
 * Rail Fence
 * Vigenre
 * Caesar
 * Hill
+* Enigma
 
 ## Group Members
 - Coleman Nugent <colemannugent@csu.fullerton.edu>
@@ -23,7 +24,7 @@ Types of ciphers used: <br>
 Run `./cipher.py --help` for the full usage.
 
 ## Extra Credit
-We implemented the Hill Cipher for the extra credit.
+We implemented the Hill and the Enigma ciphers for the extra credit.
 
 ## Additional Notes
 As stated in the usage, run ./cipher.py --help for the proper format on how to run it, though the format of running the program with the proper cipher is in the same format presented in the instructions.
