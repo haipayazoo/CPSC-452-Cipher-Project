@@ -69,7 +69,7 @@ elif(arguments.cipher == "EGM"):
 	cipher = Enigma()
 
 # Normalize and set the cipher key
-if arguments.cipher in ["VIG", "PLF"]:
+if arguments.cipher in ["VIG", "PLF", "EGM", "HIL"]:
 	normalizedKey = ""
 	for char in str(arguments.key).lower():
 		if 96 < ord(char) < 123:
